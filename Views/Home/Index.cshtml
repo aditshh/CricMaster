@@ -1,0 +1,78 @@
+﻿@using System.Linq
+@{
+    ViewBag.Title = "Home Page";
+    var teamsAndPlayers = new Dictionary<string, List<string>>
+    {
+        { "Adit Aces", new List<string> { "CSK 1", "MI 1", "KKR 1", "RR 1", "LSG 2" } },
+        { "Shrenuj Strikers", new List<string> { "LSG 1", "KXIP 1", "SRH 1", "DC 2", "RCB 2" } },
+        { "Arjun Avengers", new List<string> { "KKR 2", "GT 1", "CSK 2", "MI 2", "SRH 2" } },
+        { "Yash Yorkers", new List<string> { "RCB 1", "KXIP 2", "DC 1", "RR 2", "GT 2" } }
+    };
+
+    int CalculateValue()
+    {
+        // Call the API or perform any necessary calculations here
+        // For demonstration purposes, I'll just return a random number
+        return new Random().Next(1, 100);
+    }
+}
+
+<main>
+    <div class="row">
+        <section class="col-md-4" aria-labelledby="iplComp">
+            <h2 id="iplComp">IPL Dhamaka</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Teams</th>
+                        <th>Players</th>
+                        @for (int i = 1; i < 15; i++){
+                            <th>Match @i</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var team in teamsAndPlayers)
+                    {
+                        <tr>
+                            <td rowspan="6">@team.Key</td>
+                        </tr>
+                        {
+                            for (int i = 0; i < 5; i++)
+                            {
+                                <tr>
+                                    <td>@team.Value[i]</td>
+                                    @for (int x = 1; x < 15; x++){
+                                        <td>@CalculateValue()</td>
+                                    }
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </section>
+    </div>
+</main>
+
+<style>
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
