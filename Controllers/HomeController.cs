@@ -51,6 +51,7 @@ namespace CricMaster.Controllers
 
                 List<int> missingValues = matchIdsFromMatchTable.Except(matchIdsFromOpenerTable).ToList();
 
+               
                 foreach (var matchId in missingValues)
                 {
                     RestResponse response1 = GetResource(client, $"/mcenter/v1/{matchId}/scard");
@@ -62,7 +63,7 @@ namespace CricMaster.Controllers
                     {
                         InsertData(id: $"{matchId}_{sCard.inningsId}_1",
                                     matchId: matchId,
-                                    team: sCard.batTeamDetails.batTeamShortName,
+                                    team: $"{sCard.batTeamDetails.batTeamShortName} 1",
                                     name: sCard.batTeamDetails.batsmenData.bat_1.batName,
                                     score: sCard.batTeamDetails.batsmenData.bat_1.runs,
                                     position: 1,
@@ -73,7 +74,7 @@ namespace CricMaster.Controllers
 
                         InsertData(id: $"{matchId}_{sCard.inningsId}_2",
                                     matchId: matchId,
-                                    team: sCard.batTeamDetails.batTeamShortName,
+                                    team: $"{sCard.batTeamDetails.batTeamShortName} 2",
                                     name: sCard.batTeamDetails.batsmenData.bat_2.batName,
                                     score: sCard.batTeamDetails.batsmenData.bat_2.runs,
                                     position: 2,
