@@ -51,13 +51,13 @@ namespace CricMaster.Controllers
 
                 List<int> missingValues = matchIdsFromMatchTable.Except(matchIdsFromOpenerTable).ToList();
 
-               
+               /*
                 foreach (var matchId in missingValues)
                 {
                     RestResponse response1 = GetResource(client, $"/mcenter/v1/{matchId}/scard");
                     var sCards = JsonConvert.DeserializeObject<Scorecards>(response1.Content);
 
-                    WriteToFile($@"C:\AR-DE\sqlite\MyData_2024\{matchId}.json", response1);
+                    //WriteToFile($@"C:\AR-DE\sqlite\MyData_2024\{matchId}.json", response1);
 
                     foreach (var sCard in sCards.scoreCard)
                     {
@@ -83,7 +83,7 @@ namespace CricMaster.Controllers
                                     insertQuery: insertQuery_2,
                                     connection: connection);
                     }
-                }
+                } */
 
                 connection.Close();
             }
